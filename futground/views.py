@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date
 from django.utils.dateparse import parse_date
+from datetime import timedelta
 
 def home(request):
     return render(request, 'futground/home.html')
@@ -31,7 +32,7 @@ def detail(request, ground_id):
       form = UserReservationForm(request.POST)
       r = parse_date(rd)
 
-      if  r < date.today() or st > et or st < '10:00:00' or et > '18:00:00':
+      if  r < date.today() or r > date.today() + timedelta(days=7) or st > et or st < '10:00:00' or et > '18:00:00':
         print("sdas")
         messages.success(request,f'time format mistake')
 
@@ -59,7 +60,7 @@ def detail(request, ground_id):
           print(form.errors)
 
     else:
-       form = UserReservationForm()
+       form = UserReservationForm(initial={'ground':ground_id})
        print(ground)
 
     return render(request,'futground/detail.html',{'ground':ground,'form':form,'user_id' : request.user.id})
