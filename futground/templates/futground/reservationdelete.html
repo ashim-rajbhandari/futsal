@@ -1,0 +1,10 @@
+
+{% block content %}
+
+<form action="." method="POST">
+    {% csrf_token %}
+    <h1> do you want to cancel?</h1>
+    <p><input type='submit' value='yes'> <a href="..">cancel</a> </p>
+</form>
+
+{% endblock %}

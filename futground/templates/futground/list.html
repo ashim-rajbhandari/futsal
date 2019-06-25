@@ -1,0 +1,14 @@
+{% extends 'futground/base.html' %}
+{% block content %}
+{% if all_grounds %}
+<h3>List of futsal</h3>
+
+
+    {% for ground in all_grounds %}
+    <li><a href="futground/{{ground.id}}/"> {{ ground.name }}-{{ ground.location}} </a></li>
+    {% endfor %}
+
+{% else %}
+ <h3>nothing</h3>
+{% endif %}
+{% endblock %}

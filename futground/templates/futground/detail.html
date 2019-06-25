@@ -1,0 +1,48 @@
+{% extends 'futground/base.html' %}
+{% block content %}
+<h2> {{ ground.name}}</h2>
+<table>
+    <tr>
+        <th> location :</th>
+        <td> {{ground.location }}</td>
+    </tr>
+    <tr>
+        <th> contact :</th>
+        <td></td>
+    </tr>
+    <tr>
+        <th> price  :</th>
+        <td> {{ground.price }}</td>
+    </tr>
+    <tr>
+        <th> opens at  :</th>
+        <td> 10am to 6pm</td>
+    </tr>
+
+</table>
+
+{% block form %}
+
+{% include 'futground/reservation.html' %}
+
+{% endblock form %}
+<h2> reserved date</h2>
+<table style="width:100%">
+  <tr>
+    <th>Starts at</th>
+    <th>Ends at</th>
+    <th>Date</th>
+    <th>Action</th>
+  </tr>
+{% for g in ground.reservation_set.all %}
+    <tr>
+        <td>  starting time :{{ g.starting_time }} </td>
+        <td>  ending time : {{ g.ending_time }} </td>
+        <td>  reserved date :{{ g.reserved_date}}  </td>
+
+        {% if g.user == user_id %}
+            <td> <a href="{% url 'futground:fut-delete' g.id %}">cancel</a></td>
+        {% endif %}
+    </tr>
+{% endfor %}
+{% endblock content %}
