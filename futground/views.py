@@ -8,6 +8,7 @@ from django.contrib import messages
 from datetime import date
 from django.utils.dateparse import parse_date
 from datetime import timedelta
+from django.db.models import Q
 
 def home(request):
     return render(request, 'futground/home.html')
@@ -79,4 +80,14 @@ def deletereservation(request,reservation_id):
     return render(request,'futground/reservationdelete.html')
 
 
+def search(request):
 
+
+    if request.method == 'POST':
+      s1 = request.POST.get('srch')
+      s = Ground.objects.filter(Q(name__istartswith=s1)|
+                                Q(location__iexact=s1)
+                                )
+
+
+    return render(request,'futground/search.html',{'s':s})

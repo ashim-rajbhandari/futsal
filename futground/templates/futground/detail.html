@@ -1,5 +1,9 @@
 {% extends 'futground/base.html' %}
+{% load static %}
 {% block content %}
+<div class="container">
+  <img src="{% static 'images/uml.png' %}" class="rounded" alt="Cinque Terre" width="304" height="236">
+</div>
 <h2> {{ ground.name}}</h2>
 <table>
     <tr>

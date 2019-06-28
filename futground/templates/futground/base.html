@@ -50,6 +50,14 @@
         <a class="nav-link" href="{% url 'register' %}">Registration</a>
       </li>
       {% endif %}
+        <form action="{% url 'futground:fut-search' %}" method="POST">
+           {% csrf_token %}
+
+              <input type="text" name="srch" placeholder="search">
+              <input type='submit' value="search">
+
+      </form>
+
     </ul>
   </div>
 </nav>
