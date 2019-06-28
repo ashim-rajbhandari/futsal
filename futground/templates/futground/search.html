@@ -1,0 +1,12 @@
+{% extends 'futground/base.html' %}
+{% block content %}
+<h1> Search result</h1>
+{% if s %}
+{% for g in s  %}
+   <li><a href="list/futground/{{g.id}}/"> {{ g.name }}</a></li>
+{% endfor %}
+{% else %}
+    <h5>No result found</h5>
+{% endif %}
+{% endblock %}
+
