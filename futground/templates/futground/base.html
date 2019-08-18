@@ -14,7 +14,6 @@
 
 
 
-
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -34,10 +33,12 @@
         <a class="nav-link" href="{% url 'futground:fut-home' %}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'futground:fut-list' %}">Futsal list</a>
+        <a class="nav-link" href="{% url 'futground:fut-list'  %}">Futsal list</a>
       </li>
       {% if user.is_authenticated %}
-
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'futground:fut-recommend' %}">Recommendation</a>
+      </li>
         <li class="nav-item">
         <a class="nav-link" href="{% url 'logout' %}">Logout</a>
       </li>
@@ -52,7 +53,6 @@
       {% endif %}
         <form action="{% url 'futground:fut-search' %}" method="POST">
            {% csrf_token %}
-
               <input type="text" name="srch" placeholder="search">
               <input type='submit' value="search">
 
@@ -69,8 +69,10 @@
 </div>
 {% endfor %}
 {% endif %}
+<!---{% block photo %}
+  {% endblock %} --->
+  {% block content %}
 
-{% block content %}
 {% endblock %}
   </div>
 </body>

@@ -1,28 +1,11 @@
 {% extends 'futground/base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" text="text/css" href="{% static 'futground/style.css' %}" />
 {% block title %} home {% endblock %}
 {% block content %}
-<h1>Futsal</h1>
-<h3>Introduction</h3>
-Futsal (also known as fútsal or footsal) is a variant of association football played on a hard court,
-smaller than a football pitch, and mainly indoors. It can be considered a version of five-a-side football.
-
-Futsal is played between two teams of five players each, one of whom is the goalkeeper.
-Unlimited substitutions are permitted. Unlike some other forms of indoor football,
-the game is played on a hard court surface delimited by lines; walls or boards are not used. Futsal is also
-played with a smaller, harder, low-bounce ball.The surface, ball, and rules together favour ball control
-and passing in small spaces. The game's "emphasis is on improvisation, creativity and technique."
-<b><hr>
-<h3>History</h3>
-    "Futsal" started in 1930 when Juan Carlos Ceriani [fr], a teacher in Montevideo, Uruguay, created a version of indoor football for recreation in YMCAs.[citation needed] This new sport was originally developed for playing on basketball courts,[5] and a rule book was published in September 1933.[citation needed] Football was already highly popular in the country and after Uruguay won the 1930 World Cup and gold medals in the 1924 and 1928 Summer Olympics, it attracted even more practitioners. Ceriani's goal was to create a team game that could be played indoor or outdoor but that was similar to football.
-
-Ceriani, writing the rule book, took as examples the principles of football (the possibility to touch the ball with every part of the body except for the hands), and he took rules from other sports too: from basketball the number of team players (five) and the game duration (40 actual minutes); from water polo the rules about the goalkeeper; from team handball for the field and goal sizes.
-
-The YMCA spread the game immediately throughout South America. It was easily played by everyone, everywhere, and in any weather condition, without any difficulty, helping players to stay in shape all year round. These reasons convinced João Lotufo, a Brazilian, to bring this game to his country and adapt it to the needs of physical education.[citation needed]
-
-Initially, the rules were not uniform. In 1956, the rules were modified by Habib Maphuz and Luiz Gonzaga de Oliveira Fernandes within the YMCA of São Paulo, Brazil to allow seniors to compete.[citation needed] Luiz de Oliveira wrote the Book of Rules of Fuitsal in 1956, then adopted also at the international level.
-
-In 1965, the Confederación Sudamericana de Fútbol de Salón [pt] (South American Futsal Confederation) was formed, consisting of Uruguay, Paraguay, Peru, Argentina and Brazil.
-
-Shortly after, a unique tournament was organized. It attracted some interest in South American media, which regularly began to follow futsal. In particular, it was the journalist José Antônio Inglêz who passionately contributed to the rapid spread of the game, as well as being credited as the man who coined the name “futsal” to define the sport.
-
-{% endblock %}
+<html>
+<body>
+   <img src="{% static '/images/logo.jpg' %}" height="100%" weight="auto">
+</body>
+</html>
+   {% endblock %}

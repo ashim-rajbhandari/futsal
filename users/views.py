@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 #from django.contrib.auth.forms import UserCreationForm
-#KAAM SAKYO USERREFISTER FORM BANAYE PAXI
 from django.contrib import messages
 from .forms import UserRegisterForm
 

@@ -1,9 +1,16 @@
 {% extends 'futground/base.html' %}
+{% load staticfiles %}
+{% block title %} detail {% endblock %}
 {% load static %}
-{% block content %}
+<!---{% block photo %}
 <div class="container">
-  <img src="{% static 'images/uml.png' %}" class="rounded" alt="Cinque Terre" width="304" height="236">
+  <img src="{% static 'images/futsal.jpg' %}" width="550" height="435" align="left">
 </div>
+{% endblock %} --->
+{% block content %}
+{% if ground.photo %}
+  <img src={{ground.photo.url}} height="435",width='50%' align="left">
+{% endif %}
 <h2> {{ ground.name}}</h2>
 <table>
     <tr>
@@ -12,7 +19,7 @@
     </tr>
     <tr>
         <th> contact :</th>
-        <td></td>
+        <td>{{ground.contact}}</td>
     </tr>
     <tr>
         <th> price  :</th>
@@ -25,9 +32,34 @@
 
 </table>
 
+<div id="googleMap" style="width:30%;height:300px;"></div>
+
+<script>
+
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng({{ ground.latitude }},{{ ground.longitude }}),
+  zoom:18,
+};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({
+  position:mapProp.center,
+  animation:google.maps.Animation.BOUNCE
+
+});
+
+marker.setMap(map);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7y69WjgbhiFed2G0T1qC8wXr9SMxQjtI&callback=myMap"></script>
+
+<hr>
 {% block form %}
 
 {% include 'futground/reservation.html' %}
+
 
 {% endblock form %}
 <h2> reserved date</h2>
@@ -43,9 +75,9 @@
         <td>  starting time :{{ g.starting_time }} </td>
         <td>  ending time : {{ g.ending_time }} </td>
         <td>  reserved date :{{ g.reserved_date}}  </td>
-
+        {% now "%H:%M:%S" as time %}
         {% if g.user == user_id %}
-            <td> <a href="{% url 'futground:fut-delete' g.id %}">cancel</a></td>
+        <td> <button><a href="{% url 'futground:fut-delete' g.id %}">cancel</a></button></td>
         {% endif %}
     </tr>
 {% endfor %}

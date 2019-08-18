@@ -1,10 +1,23 @@
 {% extends 'futground/base.html' %}
+{% block title %} list {% endblock %}
 {% block content %}
+{% if user.is_authenticated %}
+<h2> Top rated futsals</h2>
+{% if all_ratings %}
+{% for r in all_ratings %}
+
+      <li><a href="futground/{{r.id}}/"> {{r.name }} </a></li>
+
+{% endfor %}
+{% endif %}
+{% endif %}
+
 {% if all_grounds %}
-<h3>List of futsal</h3>
+<h3>List of all Futsals</h3>
 
 
     {% for ground in all_grounds %}
+
     <li><a href="futground/{{ground.id}}/"> {{ ground.name }}-{{ ground.location}} </a></li>
     {% endfor %}
 
@@ -12,3 +25,4 @@
  <h3>nothing</h3>
 {% endif %}
 {% endblock %}
+

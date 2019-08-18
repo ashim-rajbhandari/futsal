@@ -6,11 +6,14 @@
 <form method = "POST">
     {% csrf_token %}
     <div class="form-group">
-    {{ form|crispy }}
+    {{ form1|crispy }}
    </div>
-  <button type="submit" class="btn btn-primary">Reserve</button>
+
+
+  <button type="submit" class="btn btn-primary" name="res_btn">Reserve</button>
 
 </form>
+
 
 
     {% endblock %}
