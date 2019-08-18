@@ -199,10 +199,10 @@ def detail(request, ground_id):
       print(st)
       print(et)
       print(rd)
-      print(r)
+      print(type(r))
 
 
-      if r < date.today() or r > date.today() + timedelta(days=7) or st > et or st < '10:00:00' or et > '18:00:00':
+      if r == None or r < date.today() or r > date.today() + timedelta(days=7) or st > et or st < '10:00:00' or et > '18:00:00':
         print("sdas")
         messages.success(request,f'time format mistake')
 
@@ -261,6 +261,8 @@ def search(request):
 
 
     return render(request,'futground/search.html',{'s':s})
+
+
 @login_required()
 def rate(request,ground_id):
     ground = Ground.objects.get(pk=ground_id)
